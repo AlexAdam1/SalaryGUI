@@ -1,0 +1,85 @@
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
+
+public class SalaryGUI extends JFrame implements ActionListener {
+    private JLabel hourlyWage;
+    private JLabel hoursPerWeek;
+    private JTextField hourlyWageField;
+    private JTextField hoursPerWeekField;
+    private JButton convertButton;
+    private JLabel SalaryConversion;
+
+SalaryGUI(){
+setTitle("SalaryConverter");
+GridBagConstraints constraints = null;
+hourlyWage = new JLabel("Hourly Wage");
+hoursPerWeek = new JLabel("Hours per Week");
+SalaryConversion = new JLabel("");
+hourlyWageField = new JTextField(10);
+hoursPerWeekField = new JTextField(10);
+hourlyWageField.setEditable(true);
+hoursPerWeekField.setEditable(true);
+convertButton = new JButton("Convert");
+convertButton.addActionListener(this);
+setLayout(new GridBagLayout());
+constraints = new GridBagConstraints();
+
+constraints.gridx = 0;
+constraints.gridy = 0;
+constraints.insets = new Insets(10, 10, 10, 10);
+add(hourlyWage, constraints);
+
+constraints.gridx = 0;
+constraints.gridy = 1;
+constraints.insets = new Insets(10, 10, 10, 10);
+add(hoursPerWeek, constraints);
+
+constraints.gridx = 1;
+constraints.gridy = 0;
+constraints.insets = new Insets(10, 10, 10, 10);
+add(hourlyWageField, constraints);
+
+constraints.gridx = 1;
+constraints.gridy = 1;
+constraints.insets = new Insets(10, 10, 10, 10);
+add(hoursPerWeekField, constraints);
+
+constraints.gridx = 0;
+constraints.gridy = 2;
+constraints.insets = new Insets(10, 10, 10, 10);
+add(convertButton, constraints);
+
+constraints.gridx = 1;
+constraints.gridy = 2;
+constraints.insets = new Insets(10, 10, 10, 10);
+add(SalaryConversion, constraints);
+    }
+
+public void actionPerformed(ActionEvent e){
+    double wage;
+    double hours;
+
+
+    wage = Double.parseDouble(hourlyWageField.getText());
+    hours = Double.parseDouble(hoursPerWeekField.getText());
+    String convert = wage * hours * 52.1429 + " dollars per year";
+    System.out.println(convert);
+    SalaryConversion.setText(convert);
+
+    }
+
+public static void main(String[] args) {
+    SalaryGUI frame = new SalaryGUI();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.pack();
+    frame.setVisible(true);
+
+    }
+}
+
+
