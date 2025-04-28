@@ -1,1 +1,4 @@
+Q. What were your challenges in performing the lab?
 
+A. I didn't have many issues while completing this lab, however I did make the mistake of
+not implementing the ActionListener in the class declaration so it took me a while to figure that out.
